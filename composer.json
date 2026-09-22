@@ -1,0 +1,24 @@
+{
+    "name": "xiangde/xiangde-coffee",
+    "description": "Website Company Profile + Digital Menu + Online Ordering untuk Xiang De Coffee (UMKM Cirebon).",
+    "type": "project",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Xiang De Coffee Dev Team"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-pdo": "*",
+        "ext-mbstring": "*",
+        "ext-json": "*"
+    },
+    "suggest": {
+        "dompdf/dompdf": "^2.0 (opsional, untuk generate PDF invoice)"
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    }
+}

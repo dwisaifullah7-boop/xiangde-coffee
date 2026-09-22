@@ -1,0 +1,16 @@
+# File sensitif - JANGAN diupload ke GitHub
+config.php
+db.php
+*.local.php
+.env
+
+# Folder/file yang tidak perlu
+node_modules/
+vendor/
+.DS_Store
+Thumbs.db
+
+# File log & backup
+*.log
+*.zip
+*.bak

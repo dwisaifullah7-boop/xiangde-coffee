@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5ebe0"/>
+      <stop offset="100%" stop-color="#e8d5b7"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <circle cx="200" cy="108" r="72" fill="#c9432e" opacity="0.16"/>
+  <g transform="translate(200,108)">
+    <path d="M-78 6 Q-78 40 0 42 Q78 40 78 6 Z" fill="#fdfaf6" stroke="#4a2c1a" stroke-width="3"/>
+    <ellipse cx="0" cy="6" rx="78" ry="14" fill="#fdfaf6" stroke="#4a2c1a" stroke-width="3"/><path d="M-50 -2 Q-20 -16 0 -2 Q20 -16 50 -2" stroke="#e8c86a" stroke-width="5" fill="none"/><path d="M-40 8 Q-10 -4 10 8 Q30 -4 50 8" stroke="#d4a017" stroke-width="4" fill="none" opacity="0.9"/><circle cx="0" cy="6" r="4" fill="#c9432e"/><circle cx="-24" cy="4" r="3" fill="#c9432e"/><circle cx="24" cy="6" r="3" fill="#c9432e"/>
+  </g>
+  <text x="200" y="222" font-family="Georgia, 'Playfair Display', serif" font-size="21" fill="#2b1810" text-anchor="middle" font-weight="600">Mie Chili Oil</text>
+  <text x="200" y="246" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#b08560" text-anchor="middle" letter-spacing="2">XIANG DE COFFEE</text>
+</svg>

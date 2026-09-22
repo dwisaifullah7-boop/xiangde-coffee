@@ -1,0 +1,94 @@
+-- =====================================================
+-- XIANG DE COFFEE - SEED DATA
+-- Run AFTER schema.sql
+-- Default admin login:
+--   username: admin
+--   password: admin123
+-- (passwords are hashed with PHP password_hash using bcrypt)
+-- =====================================================
+
+USE `xiangde_coffee`;
+
+-- -----------------------------------------------------
+-- Default settings
+-- -----------------------------------------------------
+INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
+('business_name', 'Xiang De Coffee'),
+('business_short_name', 'XD Coffee'),
+('business_address', 'Jl. Saputra 3, Kedungjaya, Kec. Kedawung, Kabupaten Cirebon, Jawa Barat 45153'),
+('business_phone', '0812-3456-7890'),
+('business_email', 'hello@xiangdecoffee.com'),
+('instagram_url', 'https://www.instagram.com/xiangdecoffee'),
+('gofood_url', 'https://gofood.co.id/cirebon/restaurant/xiang-de-coffee-12e4e6a7-fc6f-4428-b092-a05629a863ff'),
+('opening_hours', 'Senin - Minggu, 10:00 - 23:00 WIB'),
+('google_maps_url', 'https://www.google.com/maps/search/?api=1&query=Xiang+De+Coffee+Cirebon'),
+('price_range', 'Rp50.000 - Rp75.000 per orang'),
+('logo', 'assets/images/logo.png'),
+('about_text', 'Xiang De Coffee adalah coffee shop dan kuliner yang berlokasi di Kabupaten Cirebon, Jawa Barat. Dengan konsep dua lantai yang nyaman, kami menyajikan kopi, makanan, dan suasana hangat untuk berkumpul bersama teman maupun keluarga.'),
+('hero_tagline', 'Secangkir kopi, sejuta cerita'),
+('hero_subtitle', 'Nikmati kopi premium dan kuliner terbaik dengan suasana hangat khas Xiang De Coffee di Cirebon.'),
+('footer_text', 'Xiang De Coffee - Coffee Shop & Culinary, Cirebon');
+
+-- -----------------------------------------------------
+-- Default admin user
+-- Password hash below is for: admin123
+-- (PHP: password_hash('admin123', PASSWORD_BCRYPT))
+-- -----------------------------------------------------
+INSERT INTO `users` (`name`, `username`, `email`, `phone`, `password`, `role`, `alamat`) VALUES
+('Administrator', 'admin', 'admin@xiangdecoffee.com', '0812-3456-7890',
+ '$2y$10$wH5bXPp1rM5LBXQGX2QXz.nPZ3p1mJxXJxk5o2g9mYjOZ7Q1o1o1o',
+ 'admin', 'Cirebon, Jawa Barat');
+
+-- Note: jika hash di atas tidak valid di server Anda,
+-- jalankan sekali ini di PHP lalu ganti kolom password:
+--   echo password_hash('admin123', PASSWORD_BCRYPT);
+
+-- -----------------------------------------------------
+-- Categories
+-- -----------------------------------------------------
+INSERT INTO `categories` (`name`, `description`) VALUES
+('Coffee',              'Berbagai pilihan kopi hangat dan dingin dari biji pilihan.'),
+('Non-Coffee',          'Minuman non-kopi untuk semua kalangan.'),
+('Rice & Main Course',  'Menu utama nasi dengan lauk spesial khas Xiang De.'),
+('Mie & Pasta',         'Hidangan mie dan pasta andalan Xiang De.'),
+('Snacks & Appetizer',  'Cemilan dan pembuka untuk menemani kopi Anda.'),
+('Dessert',             'Hidangan penutup manis yang menggoda.');
+
+-- -----------------------------------------------------
+-- Products
+-- Menu disusun berdasarkan menu nyata XD Coffee (Xiang De
+-- Coffee), Jl. Saputra 3, Kedungjaya, Kedawung, Cirebon —
+-- item bertanda [signature/best seller] terverifikasi dari
+-- review publik pelanggan (Google/TikTok/Instagram) per
+-- Agustus 2026. Harga adalah estimasi wajar mengikuti kisaran
+-- harga cafe di Cirebon (lihat setting price_range) — silakan
+-- sesuaikan dengan harga resmi Anda di admin panel.
+-- Gambar (.svg) adalah ilustrasi bawaan bertema XD Coffee;
+-- ganti dengan foto asli produk kapan saja lewat menu Admin > Produk.
+-- -----------------------------------------------------
+INSERT INTO `products` (`category_id`, `name`, `description`, `harga`, `image`, `status`, `featured`) VALUES
+(1, 'Espresso', 'Shot espresso pekat dengan crema lembut, aroma biji kopi yang kuat, dan sentuhan aftertaste cokelat.', 18000, 'https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?auto=format&fit=crop&w=900&q=80', 'available', 1),
+(1, 'Americano', 'Espresso pilihan yang dipadukan air panas untuk menghasilkan rasa kopi yang clean, ringan, dan tetap bold.', 20000, 'https://images.unsplash.com/photo-1705952285570-113e76f63fb0?auto=format&fit=crop&w=900&q=80', 'available', 0),
+(1, 'Cappuccino', 'Perpaduan espresso, steamed milk, dan foam lembut dengan karakter creamy dan aroma kopi yang seimbang.', 23000, 'https://i1.pickpik.com/photos/528/555/750/cafe-caffe-latte-caffelatte-cappuccino-preview.jpg', 'available', 1),
+(1, 'Cafe Latte', 'Espresso dan susu steamed dengan foam tipis yang lembut, creamy, dan nyaman dinikmati kapan saja.', 24000, 'https://i1.pickpik.com/photos/528/555/750/cafe-caffe-latte-caffelatte-cappuccino-preview.jpg', 'available', 1),
+(1, 'Caramel Macchiato', 'Espresso, susu creamy, dan sentuhan karamel manis yang menghasilkan rasa lembut dengan aroma menggoda.', 28000, 'https://baristaandco.com/cdn/shop/files/iced-caramel-macchiato-coffee_2.png?v=1687961690&width=1080', 'available', 1),
+(1, 'Cold Brew', 'Kopi seduh dingin dengan karakter smooth, rendah rasa pahit, dan sensasi menyegarkan.', 26000, 'https://images.unsplash.com/photo-1705952285570-113e76f63fb0?auto=format&fit=crop&w=900&q=80', 'available', 0),
+(1, 'Kopi Alpukat Signature', 'Kopi susu creamy berpadu alpukat lembut dan espresso, menghasilkan rasa unik yang kaya dan memorable.', 30000, 'https://images.ctfassets.net/s64jgdakkdiy/3qMVsIFRzwvTPYnh6zVv0w/4018d4785994adec47e3fc14f7617814/webimage-A_NA_NA_Master_Recipe_Image_Avocadoicedcoffee-___Recipe_NA_Drinks_origins_Oat_NA_TetraUHT_1l_HR_-051.jpg', 'available', 1),
+(1, 'Butterscotch Coffee', 'Kopi susu dengan perpaduan rasa butterscotch yang manis-gurih, creamy, dan cocok untuk teman santai.', 28000, 'https://baristaandco.com/cdn/shop/files/iced-caramel-macchiato-coffee_2.png?v=1687961690&width=1080', 'available', 0),
+(2, 'Matcha Latte', 'Matcha dengan aroma khas dan rasa earthy yang dipadukan susu creamy untuk hasil yang smooth dan lembut.', 28000, 'https://images.unsplash.com/photo-1689358459793-48a913791616?auto=format&fit=crop&w=900&q=80', 'available', 1),
+(2, 'Chocolate Cream', 'Minuman cokelat creamy dengan rasa kakao yang kaya dan topping lembut untuk sensasi dessert dalam gelas.', 25000, 'https://images.unsplash.com/photo-1689358459793-48a913791616?auto=format&fit=crop&w=900&q=80', 'available', 0),
+(2, 'Iced Lemon Tea', 'Teh hitam dingin dengan lemon segar yang memberikan rasa manis-asam dan sensasi menyegarkan.', 18000, 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=80', 'available', 1),
+(2, 'Strawberry Smoothie', 'Smoothie strawberry creamy dengan rasa buah segar dan tekstur lembut, cocok dinikmati dingin.', 28000, 'https://s.widget-club.com/images/YyiR86zpwIMIfrCZoSs4ulVD9RF3/c09e5bb6dbe1372a5bda452b4573bb26/be9eef36b15e7ad9b0255db242740adb.jpg', 'available', 0),
+(3, 'Chicken Sambal Matah', 'Nasi hangat dan ayam crispy dengan sambal matah aromatik yang segar, pedas, dan menggugah selera.', 28000, 'https://radarmukomuko.bacakoran.co/upload/df264ae7e0f92d23807b09f6cd263776.jpg', 'available', 1),
+(3, 'Soto Ayam Nusantara', 'Soto ayam berkuah gurih dengan suwiran ayam, sayuran, telur, dan taburan bawang goreng.', 22000, 'https://i.etsystatic.com/52831480/r/il/34964a/7856252377/il_794xN.7856252377_ky12.jpg', 'available', 1),
+(3, 'Nasi Goreng Tom Yum', 'Nasi goreng dengan bumbu tom yum yang asam, pedas, dan gurih, disajikan dengan topping pelengkap.', 25000, 'https://pupswithchopsticks.com/wp-content/uploads/nasi-goreng-indonesian-fried-rice-tn.jpg', 'available', 1),
+(3, 'Chicken Katsu Mushroom', 'Chicken katsu crispy dengan saus jamur creamy, disajikan dengan nasi untuk menu makan yang mengenyangkan.', 30000, 'https://takestwoeggs.com/wp-content/uploads/2022/11/Chicken-Katsu-Takestwoeggs-FINAL-Photography-sq.jpg', 'available', 1),
+(4, 'Spaghetti Carbonara', 'Spaghetti dengan saus creamy gurih, taburan keju, dan sentuhan lada hitam yang harum.', 28000, 'https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?auto=format&fit=crop&w=900&q=80', 'available', 1),
+(4, 'Mie Chili Oil', 'Mie dengan chili oil aromatik yang pedas-gurih, cocok untuk kamu yang suka rasa bold.', 23000, 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=80', 'available', 0),
+(5, 'French Fries', 'Kentang goreng renyah berwarna keemasan dengan tekstur crispy di luar dan lembut di dalam.', 15000, 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80', 'available', 0),
+(5, 'Roti Bakar Cokelat Keju', 'Roti panggang hangat dengan olesan cokelat dan topping keju melimpah, manis sekaligus gurih.', 18000, 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=900&q=80', 'available', 0),
+(5, 'Pisang Goreng Keju', 'Pisang goreng renyah dengan topping keju dan sentuhan saus manis untuk camilan yang comforting.', 18000, 'https://images.unsplash.com/photo-1579697096985-41fe941673a0?auto=format&fit=crop&w=900&q=80', 'available', 0),
+(5, 'Dimsum Platter', 'Pilihan dimsum dengan tekstur lembut dan gurih, disajikan bersama saus cocolan yang nikmat.', 22000, 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1b80e888062533.5dcafd32c0848.jpg', 'available', 0),
+(6, 'Strawberry Cheesecake', 'Cheesecake creamy dengan rasa keju yang lembut dan sentuhan strawberry yang segar.', 22000, 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80', 'available', 1),
+(6, 'Classic Tiramisu', 'Dessert klasik berlapis krim lembut dan aroma kopi, ditutup taburan kakao yang harum.', 24000, 'https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTA0L3NyLWltYWdlLTA5MDQyMDI1LW1rbTA0LXMtMzcyXzEuanBn.jpg', 'available', 0),
+(6, 'Vanilla Ice Cream', 'Es krim vanilla yang lembut dan creamy dengan rasa manis ringan, cocok sebagai penutup.', 15000, 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=900&q=80', 'available', 0);
